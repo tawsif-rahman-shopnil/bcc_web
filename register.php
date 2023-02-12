@@ -144,7 +144,7 @@ include('header.php');
     </div>
     </div>
 	
-    <div class="control-group">
+	<div class="control-group">
     <label class="control-label" for="inputEmail">Session</label>
     <div class="controls">
 	<select class="span2" name="session" required>
@@ -157,12 +157,12 @@ include('header.php');
 	<div class="control-group">
     <label class="control-label" for="inputEmail"> Admission Year </label>
     <div class="controls">
-    <input type="text" class="span4" name="admityr" id="inputEmail" placeholder="Session you've Admitted" required>
+    <input type="text" class="span4" name="admityr" id="inputEmail" placeholder="Admission Year" required>
     </div>
     </div>
 
 	<div class="control-group">
-    <label class="control-label" for="inputEmail">Email Adress</label>
+    <label class="control-label" for="inputEmail">Email Address</label>
     <div class="controls">
     <input type="text" class="span4" name="email" id="inputEmail" placeholder="Email Address" required>
     </div>
@@ -192,17 +192,21 @@ include('header.php');
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-12">
+                <div class="panelhero">
+                    <img src="assets/images/hero.png" alt="bcc">
+                </div>
                 <h2>About Us</h2>
                 <p>
                     The Bangladesh Army International University of Science and Technology (BAIUST) Computer Club is a student-led organization dedicated to promoting the study and understanding of computer science and technology among the students of BAIUST.
                 </p>
             </div>
             <div class="col-md-4 col-sm-12">
+            
                 <h2>Useful Links</h2>
                 <ul class="list-unstyled link-list">
-                    <li><a ui-sref="about" href="#/about">About us</a><i class="fa fa-angle-right"></i></li>
-                    <li><a ui-sref="gallery" href="#/gallery">Gallery</a><i class="fa fa-angle-right"></i></li>
-                    <li><a ui-sref="contact" href="#/contact">Contact us</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="about" href="/bcc_web/about_us.html">About us</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="gallery" href="/bcc_web/gallery.html">Gallery</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="contact" href="mailto:computerclub@baiust.edu.bd">Contact us</a><i class="fa fa-angle-right"></i></li>
                 </ul>
             </div>
             <div class="col-md-4 col-sm-12 map-img">
@@ -219,23 +223,18 @@ include('header.php');
         </div>
     </div>
     
-
 </footer>
 <div class="copy">
         <div class="container">
             <a></a>All Rights Reserved</a>
             
-            <span>
+    <span>
             <a href="https://www.linkedin.com/company/baiustcomputerclub"><i class="fab fa-linkedin"></i></a>
             <a href="https://twitter.com/baiustcomclub"><i class="fab fa-twitter"></i></a>
             <a href="https://www.facebook.com/baiustcomputerclub"><i class="fab fa-facebook-f"></i></a>
     </span>
-        </div>
 
-    </div>
-      
-
-</body>
+</footer>
 
 <script src="assets/js/jquery-3.2.1.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
