@@ -74,7 +74,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="certgen.php">
                     <i class="fas fa-fw fa-certificate"></i>
-                    <span>Certificate Moule</span></a>
+                    <span>Certificate Module</span></a>
             </li>
 
             <!-- Divider -->
@@ -110,48 +110,112 @@
         </ul>
         <!-- End of Sidebar -->
 
-        <form method="post" action="">
-      <div class="form-group col-sm-6">
-        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name Here...">
-      </div>
-      <button type="submit" name="generate" class="btn btn-primary">Generate</button>
-    </form>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    
- <?php 
-      if (isset($_POST['generate'])) {
-        $name = strtoupper($_POST['name']);
-        
+            <!-- Main Content -->
+            <div id="content">
 
-          //designed certificate picture
-          $image = "certi.png";
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-          $createimage = imagecreatefrompng($image);
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
-          //this is going to be created once the generate button is clicked
-          $output = "certificate.png";
 
-          //then we make use of the imagecolorallocate inbuilt php function which i used to set color to the text we are displaying on the image in RGB format
-          $white = imagecolorallocate($createimage, 205, 245, 255);
-          $black = imagecolorallocate($createimage, 0, 0, 0);
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-          //Then we make use of the angle since we will also make use of it when calling the imagettftext function below
-          $rotation = 0;
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
 
-          //we then set the x and y axis to fix the position of our text name
-          $origin_x = 200;
-          $origin_y=260;
-          
-          $font_size = 10;
-          
-          $certificate_text = $name;
+                    </ul>
 
-          //font directory for name
-          $drFont = dirname(__FILE__)."/developer.ttf";
+                    </ul>
 
-          //function to display name on certificate picture
-          $text1 = imagettftext($createimage, $font_size, $rotation, $origin_x, $origin_y, $black, $drFont, $certificate_text);
+                </nav>
+<?php
 
-          imagepng($createimage,$output,3);
-      }
- ?>
+if(isset($_POST['name'])){
+	$font = dirname(__FILE__)."/Consolas.ttf";
+	$image=imagecreatefromjpeg("certificate.jpg");
+	$color=imagecolorallocate($image,19,21,22);
+	$name="";
+	imagettftext($image,35,0,400,485,$color,$font,$_POST['name']);
+	$file=time();
+	$filepath="certificate/".$file.".jpg";
+	$filepath_pdf="certificate/".$file.".pdf";
+	imagejpeg($image,$filepath);
+    echo imagejpeg($image,$filepath);
+	imagedestroy($image);
+	require('fpdf.php');
+	$pdf=new FPDF();
+	$pdf->AddPage();
+	$pdf->Image($filepath,0,0,210,150);
+	$pdf->Output($filepath_pdf,"F");
+}
+?>
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Generate Certificate</div>
+                                                <label class="control-label" for="inputEmail">Enter the name </label>
+                                                <form method="post">
+                                                    <input type="textbox" name="name"/>
+                                                    <input type="submit"/>
+                                                </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
+</div>
+</body>
+</html>

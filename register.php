@@ -113,17 +113,17 @@ include('header.php');
 	<form class="form-horizontal" method="POST">
 	 
     <div class="control-group">
-    <label class="control-label" for="inputEmail">FirstName</label>
+    <label class="control-label" for="inputEmail">Fullname</label>
     <div class="controls">
-    <input type="text" class="span4" name="fullname" id="inputEmail" placeholder="FirstName" autofocus="autofocus" required>
+    <input type="text" class="span4" name="fullname" id="inputEmail" placeholder="Fullname" autofocus="autofocus" required>
     </div>
     </div>
 	
 	
 	<div class="control-group">
-    <label class="control-label" for="inputEmail">Unique ID</label>
+    <label class="control-label" for="inputEmail">Student ID</label>
     <div class="controls">
-    <input type="text" class="span4" name="uid" id="inputEmail" placeholder="Student Unique ID" required>
+    <input type="text" class="span4" name="uid" id="inputEmail" placeholder="Enter Your Student ID" required>
     </div>
     </div>
 	 

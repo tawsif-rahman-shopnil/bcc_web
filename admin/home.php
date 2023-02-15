@@ -78,7 +78,7 @@ include('session.php');
             <li class="nav-item">
                 <a class="nav-link" href="certgen.php">
                     <i class="fas fa-fw fa-certificate"></i>
-                    <span>Certificate Moule</span></a>
+                    <span>Certificate Module</span></a>
             </li>
 
             <!-- Divider -->
@@ -136,7 +136,6 @@ include('session.php');
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -154,6 +153,8 @@ include('session.php');
                                 </a>
                             </div>
                         </li>
+
+                    </ul>
 
                     </ul>
 
@@ -179,7 +180,16 @@ include('session.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Total Members</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+<?php
+require 'dbcon.php';
+$query = "Select member_id FROM reg_member ORDER BY member_id";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h1>'.$row.'</h1>';
+?>
+                                            
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -197,7 +207,15 @@ include('session.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Female Members </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+<?php
+require 'dbcon.php';
+$query = "Select COUNT(*) FROM reg_member WHERE gender = 'Female';";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h1>'.$row.'</h1>';
+?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-female fa-2x text-gray-300"></i>
@@ -214,7 +232,15 @@ include('session.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Male Members </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">80</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+<?php
+require 'dbcon.php';
+$query = "Select COUNT(*) FROM reg_member WHERE gender = 'Male'";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h1>'.$row.'</h1>';
+?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-male fa-2x text-gray-300"></i>
@@ -232,7 +258,16 @@ include('session.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Total Voters</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">87</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+<?php
+require 'dbcon.php';
+$query = "Select member_id FROM reg_member ORDER BY member_id";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h1>'.$row.'</h1>';
+?>
+                                            </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-vote-yea fa-2x text-gray-300"></i>
@@ -253,73 +288,51 @@ include('session.php');
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Pie Chart -->
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    <h6 class="m-0 font-weight-bold text-primary">Member Ratio</h6>
                                 </div>
-                                <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
+                                    <h4 class="small font-weight-bold">Female <span
+                                            class="float-right">
+                                            <?php
+require 'dbcon.php';
+$query = "SELECT COUNT(*) FROM reg_member WHERE gender = 'Female'";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h4>'.$row.'</h4>';
+?> </span></h4></span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 20%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-primary"></i> Direct
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Social
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-info"></i> Referral
-                                        </span>
+                                    <h4 class="small font-weight-bold">Male <span
+                                            class="float-right">
+                                        
+                                            <?php
+require 'dbcon.php';
+$query = "Select COUNT(*) FROM reg_member WHERE gender = 'Male'";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h4>'.$row.'</h4>';
+?> </span></h4></span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                </div>
+                                    <h4 class="small font-weight-bold">Voters <span
+                                            class="float-right">
+                                            <?php
+require 'dbcon.php';
+$query = "Select member_id FROM reg_member ORDER BY member_id";
+$query_result = mysqli_query($conn, $query);
+$row = mysqli_num_rows($query_result);
+echo '<h4>'.$row.'</h4>';
+?> </span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%"
+                                            aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
                             </div>
-                        </div>
-                    </div>
 
                     <!-- Content Row -->
                     <div class="row">
@@ -379,9 +392,18 @@ include('session.php');
 </body>
 
 </html>
-<?php 
-include('modal.php');
-?>	
 </div>
 </body>
 </html>
+<?php
+
+    error_reporting(0);
+    $conn = mysqli_connect('localhost','root','','db_membership') or die(mysqli_error());
+    $query = "Select COUNT(*) AS count FROM 'reg_member'";
+    $query_result = mysqli_query($conn, $query);
+    while($row=mysqli_fetch_assoc($query_result)){
+        $output= $row['count'];
+    }
+
+    
+?>
